@@ -32,6 +32,8 @@ BUILD_DIR=$1
 CACHE_DIR=$2
 ENV_DIR=$3
 
+echo "I AM COMPILING!!!!!"
+
 # Export Path variables, for use in sub-scripts.
 export BUILD_DIR CACHE_DIR ENV_DIR
 
@@ -282,6 +284,7 @@ source "$BIN_DIR/steps/gdal"
 # Note: This only applies to Python 2.7.15+ and Python 3.6.6+
 (( start=$(nowms) ))
 # shellcheck source=bin/steps/sqlite3
+echo "Running sqlite3 steps"
 source "$BIN_DIR/steps/sqlite3"
 buildpack_sqlite3_install
 mtime "sqlite3.install.time" "${start}"
