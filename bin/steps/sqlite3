@@ -64,7 +64,10 @@ sqlite3_install() {
 }
 
 buildpack_sqlite3_install() {
-  ls -l $BUILD_DIR/.heroku
+
+  puts-step "Checking sqlite3 install"
+  
+  puts-step $(ls -l $BUILD_DIR/.heroku)
   HEROKU_PYTHON_DIR="$BUILD_DIR/.heroku/python"
 
   SQLITE3_VERSION_FILE="$BUILD_DIR/.heroku/python-sqlite3-version"
@@ -72,7 +75,7 @@ buildpack_sqlite3_install() {
     INSTALLED_SQLITE3_VERSION=$(cat "$SQLITE3_VERSION_FILE")
   fi
   
-  echo "Installed version: $INSTALLED_SQLITE3_VERSION"
+  puts-step "Installed version: $INSTALLED_SQLITE3_VERSION"
 
   sqlite3_version
 
