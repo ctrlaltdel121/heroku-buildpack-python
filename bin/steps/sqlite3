@@ -4,8 +4,9 @@
 source "$BIN_DIR/utils"
 
 sqlite3_version() {
+  echo "Getting sqlite version"
   SQLITE3_VERSION=${SQLITE3_VERSION:-$(dpkg -s libsqlite3-0 | grep Version | sed 's/Version: //')}
-
+  echo $SQLITE3_VERSION
   export SQLITE3_VERSION
 }
 
@@ -67,7 +68,6 @@ buildpack_sqlite3_install() {
 
   puts-step "Checking sqlite3 install"
   
-  puts-step $(ls -l $BUILD_DIR/.heroku)
   HEROKU_PYTHON_DIR="$BUILD_DIR/.heroku/python"
 
   SQLITE3_VERSION_FILE="$BUILD_DIR/.heroku/python-sqlite3-version"
